@@ -6,6 +6,7 @@ import com.bnb.app.application.mapper.BnbMapper;
 import com.bnb.app.domain.model.CategoryEntity;
 import com.bnb.app.domain.repository.CategoryRepository;
 import com.bnb.app.web.exception.ConflictException;
+import com.bnb.app.web.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,5 +40,16 @@ public class CategoryService {
 
         CategoryEntity saved = categoryRepository.save(new CategoryEntity(request.name().trim()));
         return mapper.toCategoryResponse(saved);
+    }
+
+    public void delete(Long id) {
+        CategoryEntity category = categoryRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Category not found: " + id));
+
+        if (!category.getItems().isEmpty()) {
+            throw new ConflictException("Category cannot be deleted while items exist");
+        }
+
+        categoryRepository.delete(category);
     }
 }

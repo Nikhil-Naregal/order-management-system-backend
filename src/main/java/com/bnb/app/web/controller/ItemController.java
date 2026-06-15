@@ -35,4 +35,10 @@ public class ItemController {
     public ItemResponse update(@PathVariable Long id, @Valid @RequestBody UpdateItemRequest request) {
         return itemCatalogService.update(id, request);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        itemCatalogService.delete(id);
+    }
 }

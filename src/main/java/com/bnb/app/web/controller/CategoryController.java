@@ -29,4 +29,10 @@ public class CategoryController {
     public CategoryResponse create(@Valid @RequestBody CreateCategoryRequest request) {
         return categoryService.create(request);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        categoryService.delete(id);
+    }
 }

@@ -58,6 +58,12 @@ public class ItemCatalogService {
         return mapper.toItemResponse(item);
     }
 
+    public void delete(Long id) {
+        ItemEntity item = itemRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Item not found: " + id));
+        itemRepository.delete(item);
+    }
+
     private CategoryEntity findCategory(Long id) {
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Category not found: " + id));
