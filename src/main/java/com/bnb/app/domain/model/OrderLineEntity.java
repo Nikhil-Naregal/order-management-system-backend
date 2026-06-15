@@ -1,8 +1,10 @@
 package com.bnb.app.domain.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 
 @Entity
 @Table(name = "order_lines")
@@ -31,6 +33,10 @@ public class OrderLineEntity {
 
     @Column(nullable = false)
     private Integer quantity;
+
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false, columnDefinition = "timestamp with time zone default now()")
+    private Instant createdAt;
 
     public OrderLineEntity() {
     }
@@ -78,5 +84,9 @@ public class OrderLineEntity {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 }
