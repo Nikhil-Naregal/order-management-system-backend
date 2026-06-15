@@ -24,6 +24,16 @@ docker run -p 8080:8080 \
   bnb-backend
 ```
 
+## Health check
+
+- `GET /health` returns `200 OK` with `OK`
+
+## Render
+
+- Add `render.yaml` to the project root
+- Set `healthCheckPath: /health`
+- Use cron job `keep-alive` to poll the health endpoint every 5 minutes
+
 ## Key API routes
 - `GET /api/customers?status=ACTIVE&search=`
 - `POST /api/customers`
