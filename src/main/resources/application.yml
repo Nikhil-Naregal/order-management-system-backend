@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/bnb
-    username: postgres
-    password: admin
+    url: jdbc:postgresql://ep-polished-morning-ahj2tfqc-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+    username: neondb_owner
+    password: npg_1xE4AlpOaghf
   jpa:
     hibernate:
       ddl-auto: update
