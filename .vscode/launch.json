@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+        "type": "java",
+        "name": "BnbBackendApplication",
+        "request": "launch",
+        "mainClass": "com.bnb.app.BnbBackendApplication",
+        "projectName": ""
+    },
+    {
+        "type": "java",
+        "name": "Launch BnbBackendApplication",
+        "request": "launch",
+        "mainClass": "com.bnb.app.BnbBackendApplication",
+        "projectName": "bnb-backend"
+    }
+]
+}

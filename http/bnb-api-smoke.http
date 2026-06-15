@@ -1,0 +1,78 @@
+### List active customers
+GET http://localhost:8080/api/customers?status=ACTIVE
+
+### Search customer across active / inactive by calling each status list
+GET http://localhost:8080/api/customers?status=ACTIVE&search=arya
+
+### List inactive customers
+GET http://localhost:8080/api/customers?status=INACTIVE&search=arya
+
+### List categories
+GET http://localhost:8080/api/categories
+
+### Add category
+POST http://localhost:8080/api/categories
+Content-Type: application/json
+
+{
+  "name": "Desserts"
+}
+
+### List in-stock items
+GET http://localhost:8080/api/items?inStock=true
+
+### Add item
+POST http://localhost:8080/api/items
+Content-Type: application/json
+
+{
+  "name": "Brownie Shake",
+  "price": 159.00,
+  "inStock": true,
+  "categoryId": 2
+}
+
+### Add customer
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+
+{
+  "name": "Nova Crunch",
+  "orderLines": [
+    { "itemId": 1, "quantity": 1 },
+    { "itemId": 3, "quantity": 1 }
+  ]
+}
+
+### Update customer name
+PUT http://localhost:8080/api/customers/1
+Content-Type: application/json
+
+{
+  "name": "Arya Blaze Prime"
+}
+
+### Add order line
+POST http://localhost:8080/api/customers/1/order-lines
+Content-Type: application/json
+
+{
+  "itemId": 2,
+  "quantity": 1
+}
+
+### Mark payment successful and move to inactive
+PUT http://localhost:8080/api/customers/1/status
+Content-Type: application/json
+
+{
+  "status": "INACTIVE"
+}
+
+### Move inactive user back to active
+PUT http://localhost:8080/api/customers/1/status
+Content-Type: application/json
+
+{
+  "status": "ACTIVE"
+}
